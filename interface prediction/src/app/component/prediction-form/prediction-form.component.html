@@ -1,0 +1,100 @@
+<!-- <form [formGroup]="predictionForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="q1Balance">Q1 Balance:</label>
+    <input id="q1Balance" formControlName="q1Balance" type="number" required />
+  </div>
+  <div>
+    <label for="q2Balance">Q2 Balance:</label>
+    <input id="q2Balance" formControlName="q2Balance" type="number" required />
+  </div>
+  <div>
+    <label for="q3Balance">Q3 Balance:</label>
+    <input id="q3Balance" formControlName="q3Balance" type="number" required />
+  </div>
+  <div>
+    <label for="q4Balance">Q4 Balance:</label>
+    <input id="q4Balance" formControlName="q4Balance" type="number" required />
+  </div>
+  <button type="submit" [disabled]="predictionForm.invalid">Prédire</button>
+</form>
+
+<div *ngIf="predictionResult !== null">
+  <h3>Résultat de la prédiction : {{ predictionResult }}</h3>
+</div> -->
+<form [formGroup]="predictionForm" (ngSubmit)="onSubmit()" class="prediction-form">
+  <h2>Prédiction de solde</h2>
+
+  <div class="form-group">
+    <label for="q1Balance">
+      <i class="fas fa-dollar-sign"></i> Q1 Balance:
+    </label>
+    <input
+      id="q1Balance"
+      formControlName="q1Balance"
+      type="number"
+      class="form-control"
+      placeholder="Entrez le solde du premier trimestre"
+      required
+    />
+    <div *ngIf="predictionForm.controls['q1Balance'].invalid && predictionForm.controls['q1Balance'].touched" class="error-message">
+      Ce champ est requis.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="q2Balance">
+      <i class="fas fa-dollar-sign"></i> Q2 Balance:
+    </label>
+    <input
+      id="q2Balance"
+      formControlName="q2Balance"
+      type="number"
+      class="form-control"
+      placeholder="Entrez le solde du deuxième trimestre"
+      required
+    />
+    <div *ngIf="predictionForm.controls['q2Balance'].invalid && predictionForm.controls['q2Balance'].touched" class="error-message">
+      Ce champ est requis.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="q3Balance">
+      <i class="fas fa-dollar-sign"></i> Q3 Balance:
+    </label>
+    <input
+      id="q3Balance"
+      formControlName="q3Balance"
+      type="number"
+      class="form-control"
+      placeholder="Entrez le solde du troisième trimestre"
+      required
+    />
+    <div *ngIf="predictionForm.controls['q3Balance'].invalid && predictionForm.controls['q3Balance'].touched" class="error-message">
+      Ce champ est requis.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="q4Balance">
+      <i class="fas fa-dollar-sign"></i> Q4 Balance:
+    </label>
+    <input
+      id="q4Balance"
+      formControlName="q4Balance"
+      type="number"
+      class="form-control"
+      placeholder="Entrez le solde du quatrième trimestre"
+      required
+    />
+    <div *ngIf="predictionForm.controls['q4Balance'].invalid && predictionForm.controls['q4Balance'].touched" class="error-message">
+      Ce champ est requis.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="predictionForm.invalid">Prédire</button>
+</form>
+
+<div *ngIf="predictionResult !== null" class="prediction-result">
+  <h3>Résultat de la prédiction du Average Balance : {{ predictionResult }}</h3>
+</div>
